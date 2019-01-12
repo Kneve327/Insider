@@ -1,0 +1,127 @@
+<nav id="topnav" class="navbar">
+
+    <a href="/myprofile"><i id="profilePicture" class="fas fa-user icon-cog"></i></a>
+
+    <a id="title" class="navbar-brand" href="#">INSIDER</a>
+
+    <div class="d-flex justify-content-end">
+        <a href="/"><i id="home" class="faButton fas fa-home icon-cog"></i></a>
+        <a href="/api/users"><i id="search" class="faButton fas fa-search icon-cog"></i></a>
+        <a href="/"><i id="notifications" class="faButton fas fa-bolt icon-cog"></i></a>
+        <link href="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+        <a href="/" data-featherlight="<div id='lightbox'>
+
+            <h4 id='lightbox-header'>Share a Post!</h4>
+            <textarea rows='4' cols='50' id='post-text'></textarea>
+            <button id='post-button'>Post</button>
+
+            <h4 id='lightbox-header'>Or a Gif!</hr>
+            <div id='search-function'>
+                <input type='text' id='giphy-search'>
+                <button id='search-button'>Search</button>
+                <button id='clear-gifs'>Clear</button>
+                <div id='gifs-appear-here'></div>
+            </div>
+
+            <script
+                src='https://code.jquery.com/jquery-3.3.1.min.js'
+                integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+                crossorigin='anonymous'>
+            </script>
+
+            <script>
+                $('#post-button').on('click', function() {
+                  var postArray = []
+                  var post = $('#post-text').val()
+                  postArray.push(post)
+                  console.log('--------------------')
+                  console.log(postArray)
+                  console.log('--------------------')
+                })
+
+                $('#search-button').on('click', function () {
+                event.preventDefault()
+                $('#gifs-appear-here').empty()
+                var search = $('#giphy-search').val()
+                var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=FiDaJGdZm9CCACzTDlexL1LjaBfu4j9o&limit=10'
+                {{!-- console.log(queryURL) --}}
+
+                $.ajax({
+                    url: queryURL,
+                    method: 'GET'
+                }).then(function (response) {
+                    var results = response.data
+                    for (var i = 0; i < results.length; i++) {
+                            var gifDiv = $('<div>')
+                            var gifImage = $('<img>')
+                            gifImage.attr('src', results[i].images.fixed_height.url);
+                            gifDiv.append(gifImage)
+                            $('#gifs-appear-here').prepend(gifDiv)
+                            gifDiv.addClass('gifs')
+                            gifDiv.attr('data-imgurl', results[i].images.fixed_height.url)
+                        }
+                    })
+                })
+
+                $(document).on('click', '.gifs', function (req, res) {
+                    var gifURL = $(this).data('imgurl')
+                    console.log('------------------------')
+                    console.log(gifURL)
+                    console.log('------------------------')
+                })
+
+                $('#clear-gifs').on('click', function () {
+                    $('#gifs-appear-here').empty()
+                    $('#giphy-search').val('')
+                })
+            </script>
+
+        </div>"><i id="post" class="faButton fas fa-plus icon-cog"></i></a>
+        
+    </div>
+
+</nav>
+
+{{!-- <form>
+    <div class="form-group">
+        <label id="firstFormLabel" class="formLabel">First Name</label>
+        <input id="fnForm" type="text" class="myprofForm form-control">
+    </div>
+    <div class="form-group">
+        <label class="formLabel">Last Name</label>
+        <input id="lnForm" type="text" class="myprofForm form-control">
+    </div>
+    <div class="form-group">
+        <label class="formLabel">Username</label>
+        <input id="unForm" type="text" class="myprofForm form-control">
+    </div>
+    <div class="form-group">
+        <label class="formLabel">Email</label>
+        <input id="emailForm" type="text" class="myprofForm form-control">
+    </div>
+</form> --}}
+
+<p class="formLabel" id="firstFormLabel">First Name</p>
+<button id="fnButton" class="myprofForm"></button>
+<p class="formLabel" id="secondFormLabel">Last Name</p>
+<button id="lnButton" class="myprofForm"></button>
+<p class="formLabel" id="thirdFormLabel">Username</p>
+<button id="unButton" class="myprofForm"></button>
+<p class="formLabel" id="fourthFormLabel">Email</p>
+<button id="emailButton" class="myprofForm"></button>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">
+            <div id="footerButtons" class="d-flex justify-content-between">
+                <a href="/"><i id="homeFooter" class="faButton fas fa-home icon-cog"></i></a>
+                <a href="/api/user"><i id="searchFooter" class="faButton fas fa-search icon-cog"></i></a>
+                <a href="/"><i id="postFooter" class="faButton fas fa-plus icon-cog"></i></a>
+                <a href="/"><i id="notificationsFooter" class="faButton fas fa-bolt icon-cog"></i></a>
+                <a href="/myprofile"><i id="profileFooter" class="fas fa-user icon-cog"></i></a>
+            </div>
+        </span>
+    </div>
+</footer>
+
+<script src="/js/myprofile.js"></script>

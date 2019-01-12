@@ -1,0 +1,264 @@
+body {
+  background-color: rgb(54, 48, 48);
+  color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  border-top: white 3px solid;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(54, 48, 48);
+}
+
+
+#fnButton {
+  width: 50%;
+  height: 35px;
+}
+
+#lnButton {
+  width: 50%;
+  height: 35px;
+}
+
+#unButton {
+  width: 50%;
+  height: 35px;
+}
+
+#emailButton {
+  width: 50%;
+  height: 35px;
+}
+
+#clickHereLogin {
+  color: white;
+}
+
+#clickHereSignup {
+  color: white;
+}
+
+#firstFormLabel {
+  margin-top: 50px;
+}
+
+#secondFormLabel {
+  margin-top: 20px;
+}
+
+#thirdFormLabel {
+  margin-top: 20px;
+}
+
+#fourthFormLabel {
+  margin-top: 20px;
+}
+
+#topnav2 {
+  height: 60px;
+  display: flex;
+  background-color: rgb(54, 48, 48);
+  border-bottom: white 3px solid;
+}
+
+.icon-cog {
+  color: white;
+}
+
+#weather-function {
+  margin-left: 80%;
+}
+
+#profile-picture {
+  background-color: gray;
+  display: inline;
+}
+
+#postContainer {
+  margin-top: 30px;
+  margin-left: 100px;
+  padding: 30px 60px 30px 80px;
+  width: 60%;
+  margin-bottom: 80px;
+}
+
+.lightbox-header {
+  color: black;
+}
+
+.gifs {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.my-post {
+  color: black;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  border-style: solid;
+  border-radius: 30px;
+  margin-right: 30%;
+  margin-left: 30%;
+  margin-bottom: 30px;
+  /*box-shadow: 3px 3px 10px 3px grey;*/
+}
+
+.my-gif {
+  background-color: white;
+  border-style: solid;
+  border-radius: 30px;
+  margin-right: 30%;
+  margin-left: 30%;
+  margin-bottom: 30px;
+  /*box-shadow: 3px 3px 10px 3px grey;*/
+}
+
+@media (max-width: 767px) {
+
+  .formLabel {
+    margin-left: 100px;
+  }
+  
+  .myprofForm {
+    width: 50%;
+    margin-left: 100px;
+  }
+
+  #weather-function {
+    text-align: center;
+    margin-left: 0%;
+  }
+
+  #home {
+    display: none;
+  }
+
+  #search {
+    display: none;
+  }
+
+  #notifications {
+    display: none;
+  }
+
+  #post {
+    display: none;
+  }
+
+  .faButton {
+    display: none;
+  }
+  #fa-plus {
+    display: none;
+  }
+
+  #topnav {
+    display: flex;
+    background-color: rgb(54, 48, 48);
+    border-bottom: white 3px solid;
+  }
+
+  #title {
+    color: white;
+    font-size: 30px;
+  }
+
+  #profilePicture {
+    display: none;
+  }
+
+  #footerButtons {
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .formLabel {
+    margin-left: 350px;
+  }
+
+  .myprofForm {
+    margin-left: 350px;
+  }
+
+  #topnav {
+    display: flex;
+    background-color: rgb(54, 48, 48);
+    border-bottom: white 3px solid;
+  }
+
+  #title {
+    color: white;
+    font-size: 30px;
+  }
+
+  .faButton {
+    font-size: 24px;
+    margin-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #fa-plus {
+    font-size: 24px;
+    margin-right: 50px;
+    color: white;
+  }
+
+  #profilePicture {
+    font-size: 24px;
+    margin-left: 20px;
+  }
+
+  #homeFooter {
+    display: none;
+  }
+
+  #searchFooter {
+    display: none;
+  }
+
+  #postFooter {
+    display: none;
+  }
+
+  #notificationsFooter {
+    display: none;
+  }
+
+  #profileFooter {
+    display: none;
+  }
+}
+
+#indexFooter {
+  margin-top: 100px;
+}
+
+.view-post{
+  background-color: gray;
+  margin-bottom: 40px;
+  padding: 20px 70px 20px 70px;
+}
+
+.post-container {
+  
+  margin-top: 40px;
+  margin-left: 25%;
+  padding: 30px 50px 30px 50px;
+  width: 35%;
+  background-color: white;
+  
+}
+
+#post-button {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

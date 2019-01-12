@@ -1,0 +1,230 @@
+<nav id="topnav" class="navbar">
+
+  <a href="/myprofile"><i id="profilePicture" class="fas fa-user icon-cog"></i></a>
+
+  <a id="title" class="navbar-brand" href="#">INSIDER</a>
+
+  <div class="d-flex justify-content-end">
+    <a href="/"><i id="home" class="faButton fas fa-home icon-cog"></i></a>
+    <a href="/api/users"><i id="search" class="faButton fas fa-search icon-cog"></i></a>
+    <a href="/"><i id="notifications" class="faButton fas fa-bolt icon-cog"></i></a>
+
+    <div id="fa-plus"><a href="#" class="faButton fas fa-plus icon-cog"></a></div>
+
+
+  </div>
+
+</nav>
+
+<div class="post-container">
+
+  <h4 id='post_header' class='lightbox-header'>Post Header</h4>
+  <textarea rows='1' cols='50' id='post-textHeader'></textarea>
+  <h4 id='post_body' class='lightbox-header'>Post Body</h4>
+  <textarea rows='2' cols='50' id='post-textBody'></textarea>
+  <br>
+  <button id='post-button'>Post</button>
+  
+  <h4 id='gif_URL' class='lightbox-header'>Or Search For A Gif</h4>
+  <div id='search-function'>
+    <input type='text' id='giphy-search'>
+    <button id='search-button'>Search</button>
+    <button id='clear-gifs'>Clear</button>
+    <div id='gifs-appear-here'></div>
+  </div>
+
+</div>
+
+<!--Weather Theme Change-->
+<div id="weather-function">
+  <p id="weather-text">Change the page's theme based on the weather!</p>
+  <p id="user-city"></p>
+  <input type="text" id="weather-city" placeholder="Type in your city!">
+  <br>
+  <br>
+  <button id="search-weather">Search</button>
+  <button id="reset-color">Reset Theme</button>
+</div>
+
+<div id="posts-div">
+  <!--Posts and gifs go here-->
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+      <div id="footerButtons" class="d-flex justify-content-between">
+        <a href="/"><i id="homeFooter" class="faButton fas fa-home icon-cog"></i></a>
+        <a href="/api/user"><i id="searchFooter" class="faButton fas fa-search icon-cog"></i></a>
+        <a href="/"><i id="postFooter" class="faButton fas fa-plus icon-cog"></i></a>
+        <a href="/"><i id="notificationsFooter" class="faButton fas fa-bolt icon-cog"></i></a>
+        <a href="/myprofile"><i id="profileFooter" class="fas fa-user icon-cog"></i></a>
+      </div>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Weather API
+  $("#search-weather").on("click", function () {
+    var userCity = $("#weather-city").val().toLowerCase()
+    console.log(userCity)
+    $.ajax({
+      url: "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&APPID=0aaf6ed86a35a5a59f48151fb51f3428",
+      method: "GET"
+    }).then(function (response) {
+      console.log("######################################")
+      console.log(response)
+      var currentWeather = response.weather[0].main
+      // $("#user-city").text("The city of " + userCity + "'s weather is currently " + currentWeather)
+      console.log(currentWeather)
+      if (currentWeather === "Clear") {
+        $(".fa-cog").css("color", "lightblue")
+        $("#title").css("color", "lightblue")
+        $("#topnav").css("border-bottom-color", "lightblue")
+        $("footer").css("border-top-color", "lightblue")
+        $(".faButton").css("color", "lightblue")
+        $("#profileFooter").css("color", "lightblue")
+        $("#weather-text").css("color", "lightblue")
+        $("#profilePicture").css("color", "lightblue")
+        $("#user-city").css("color", "lightblue")
+      } else if (currentWeather === "Clouds") {
+        $(".fa-cog").css("color", "grey")
+        $("#title").css("color", "grey")
+        $("#topnav").css("border-bottom-color", "grey")
+        $("footer").css("border-top-color", "grey")
+        $(".faButton").css("color", "grey")
+        $("#profileFooter").css("color", "grey")
+        $("#weather-text").css("color", "grey")
+        $("#profilePicture").css("color", "grey")
+        $("#user-city").css("color", "grey")
+      } else if (currentWeather === "Rain") {
+        $(".fa-cog").css("color", "rgb(3, 74, 236)")
+        $("#title").css("color", "rgb(3, 74, 236)")
+        $("#topnav").css("border-bottom-color", "rgb(3, 74, 236)")
+        $("footer").css("border-top-color", "rgb(3, 74, 236)")
+        $(".faButton").css("color", "rgb(3, 74, 236)")
+        $("#profileFooter").css("color", "rgb(3, 74, 236)")
+        $("#weather-text").css("color", "rgb(3, 74, 236)")
+        $("#profilePicture").css("color", "rgb(3, 74, 236)")
+        $("#user-city").css("color", "rgb(3, 74, 236)")
+      }
+    })
+  })
+  // Returns to default color theme
+  $("#reset-color").on("click", function () {
+    $("#weather-city").val("")
+    $(".fa-cog").css("color", "white")
+    $("#title").css("color", "white")
+    $("#topnav").css("border-bottom-color", "white")
+    $("footer").css("border-top-color", "white")
+    $(".faButton").css("color", "white")
+    $("#profileFooter").css("color", "white")
+    $("#weather-text").css("color", "white")
+    $("#profilePicture").css("color", "white")
+    $("#user-city").empty()
+  })
+</script>
+
+
+<div id="home">
+  <div id="postContainer" class="container">
+    {{!-- <div class="row"> --}}
+      {{!-- <div class="col-8 offset-1"> --}}
+
+        
+
+        <div id="get-header">
+          <span id="post"></span>
+        </div>
+
+        <div id="get-body"></div>
+
+        <div id="get-gif"></div>
+
+        
+  </div>
+</div>
+
+{{!-- *********************************************** --}}
+
+
+
+
+
+
+<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+  crossorigin='anonymous'>
+
+
+
+  </script>
+
+<script>
+  $('#post-button').on('click', function () {
+    var post = $('#post-textHeader').val()
+    var post2 = $('#post-textBody').val()
+    console.log(post)
+    console.log(post2)
+  })
+
+  $('#search-button').on('click', function () {
+    event.preventDefault()
+    $('#gifs-appear-here').empty()
+    var search = $('#giphy-search').val()
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=FiDaJGdZm9CCACzTDlexL1LjaBfu4j9o&limit=10'
+    console.log(queryURL)
+
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function (response) {
+      var results = response.data
+      for (var i = 0; i < results.length; i++) {
+        var gifDiv = $('<div>')
+        var gifImage = $('<img>')
+        gifImage.attr('src', results[i].images.fixed_height.url);
+        gifDiv.append(gifImage)
+        $('#gifs-appear-here').prepend(gifDiv)
+        gifDiv.addClass('gifs')
+        gifDiv.attr('data-imgurl', results[i].images.fixed_height.url)
+      }
+    })
+  })
+
+  $(document).on('click', '.gifs', function (req, res) {
+    var gifURL = $(this).data('imgurl')
+    console.log('------------------------')
+    console.log(gifURL)
+    console.log('------------------------')
+  })
+
+  $('#clear-gifs').on('click', function () {
+    $('#gifs-appear-here').empty()
+    $('#giphy-search').val('')
+  })
+</script>
+
+
+
+
+
+{{!-- ************************************** --}}
+
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+      <div id="footerButtons" class="d-flex justify-content-between">
+        <a href="/"><i id="homeFooter" class="faButton fas fa-home icon-cog"></i></a>
+        <a href="/api/user"><i id="searchFooter" class="faButton fas fa-search icon-cog"></i></a>
+        <a href="/"><i id="postFooter" class="faButton fas fa-plus icon-cog"></i></a>
+        <a href="/"><i id="notificationsFooter" class="faButton fas fa-bolt icon-cog"></i></a>
+        <a href="/myprofile"><i id="profileFooter" class="fas fa-user icon-cog"></i></a>
+      </div>
+    </span>
+  </div>
+</footer>
+
+<script src="/js/index.js"></script>
+<script src="/js/posts.js"></script>
